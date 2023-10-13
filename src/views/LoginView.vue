@@ -4,8 +4,8 @@
     <form @submit.prevent="login" class="mt-3">
       <div class="forms">
         <div class="mb-3">
-          <label for="username" class="form-label">Username:</label>
-          <input v-model="username" type="text" class="form-control" required />
+          <label for="email" class="form-label">Email:</label>
+          <input v-model="email" type="email" class="form-control" required />
         </div>
         <div class="mb-3">
           <label for="password" class="form-label">Password:</label>
@@ -21,7 +21,7 @@
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
 
-const username = ref('')
+const email = ref('')
 const password = ref('')
 const router = useRouter()
 
@@ -29,14 +29,14 @@ const login = () => {
   const storedUser = JSON.parse(localStorage.getItem('user'))
   if (
     storedUser &&
-    storedUser.username === username.value &&
+    storedUser.email === email.value &&
     storedUser.password === password.value
   ) {
     sessionStorage.setItem('authenticated', 'true')
     router.push('/post')
     window.location.reload()
   } else {
-    alert('Invalid username or password.')
+    alert('Invalid email or password.')
   }
 }
 </script>
