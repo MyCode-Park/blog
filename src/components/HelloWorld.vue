@@ -1,22 +1,42 @@
-<script setup>
-defineProps({
-  msg: {
-    type: String,
-    required: true
-  }
-})
-</script>
-
 <template>
-  <div class="greetings">
-    <h1 class="green">{{ msg }}</h1>
-    <h3>
-      You’ve successfully created a project with
-      <a href="https://vitejs.dev/" target="_blank" rel="noopener">Vite</a> +
-      <a href="https://vuejs.org/" target="_blank" rel="noopener">Vue 3</a>.
-    </h3>
+  <div class="blog-landing">
+    <h2>Blogs</h2>
+    <div v-if="blogPosts">
+      <ul>
+        <li v-for="post in blogPosts" :key="post.id">
+          <router-link :to="'/post/' + post.id">
+            <h3 @click="viewPost(post.id)">{{ post.title }}</h3>
+          </router-link>
+          <!-- <p>{{ post.body }}</p> -->
+        </li>
+      </ul>
+    </div>
+    <div v-else>Loading...</div>
   </div>
 </template>
+
+<script setup>
+import { ref, onMounted } from 'vue'
+import { useRouter } from 'vue-router'
+
+const blogPosts = ref(null)
+
+const viewPost = (postId) => {
+  const router = useRouter()
+  router.push(`/post/${postId}`)
+}
+
+const fetchData = () => {
+  fetch('https://jsonplaceholder.typicode.com/posts')
+    .then((response) => response.json())
+    .then((data) => {
+      blogPosts.value = data.slice(0, 10)
+    })
+}
+onMounted(() => {
+  fetchData()
+})
+</script>
 
 <style scoped>
 h1 {
@@ -40,5 +60,29 @@ h3 {
   .greetings h3 {
     text-align: left;
   }
+}
+
+.blog-landing {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+li {
+  margin-bottom: 20px;
+}
+
+h3 {
+  margin-bottom: 10px;
+  color: #007bff;
+  cursor: pointer;
+}
+
+h3:hover {
+  text-decoration: underline;
 }
 </style>

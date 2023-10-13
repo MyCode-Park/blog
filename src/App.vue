@@ -1,24 +1,53 @@
-<script setup>
-import { RouterLink, RouterView } from 'vue-router'
-import HelloWorld from './components/HelloWorld.vue'
-</script>
-
 <template>
-  <header>
-    <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
-
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-
+  <div>
+    <header>
       <nav>
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
+        <div class="wrapper">
+          <RouterLink to="/" v-if="authenticated">View Post</RouterLink>
+          <RouterLink to="/login" @click="handleLogout">
+            {{ isLoggedIn ? 'Logout' : 'Login' }}
+          </RouterLink>
+          <RouterLink to="/register" v-if="!authenticated" :disabled="authenticated">
+            Register
+          </RouterLink>
+        </div>
       </nav>
-    </div>
-  </header>
+    </header>
 
-  <RouterView />
+    <RouterView />
+  </div>
 </template>
+
+<script setup>
+import { computed, ref } from 'vue';
+import { RouterLink, useRouter } from 'vue-router';
+import { onBeforeMount } from 'vue';
+
+const router = useRouter();
+
+const authenticated = computed(() => {
+  const user = JSON.parse(localStorage.getItem('user'));
+  return user !== null;
+});
+
+const isLoggedIn = ref(authenticated.value);
+
+const handleLogout = () => {
+  window.location.reload()
+  localStorage.removeItem('user');
+  isLoggedIn.value = false;
+  router.push('/register');
+};
+
+onBeforeMount(() => {
+  if (authenticated.value) {
+    router.push('/');
+  } else {
+    router.push('/register');
+  }
+});
+
+</script>
 
 <style scoped>
 header {
@@ -39,7 +68,8 @@ nav {
 }
 
 nav a.router-link-exact-active {
-  color: var(--color-text);
+  color: rgb(0, 102, 255);
+  text-decoration: none;
 }
 
 nav a.router-link-exact-active:hover {
@@ -50,10 +80,14 @@ nav a {
   display: inline-block;
   padding: 0 1rem;
   border-left: 1px solid var(--color-border);
+  text-decoration: none;
 }
 
 nav a:first-of-type {
   border: 0;
+  color: rgb(0, 0, 0);
+  text-decoration: none;
+
 }
 
 @media (min-width: 1024px) {
