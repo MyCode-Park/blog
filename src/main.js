@@ -13,16 +13,8 @@ import 'bootstrap/dist/js/bootstrap.bundle.min'
 const routes = [
   { path: '/', name: 'PostView', component: HelloWorld },
   { path: '/post/:id', component: PostView },
-  {
-    path: '/register',
-    name: 'register',
-    component: RegisterView
-  },
-  {
-    path: '/login',
-    name: 'login',
-    component: LoginView
-  }
+  { path: '/register', component: RegisterView },
+  { path: '/login', component: LoginView }
 ]
 
 const router = createRouter({

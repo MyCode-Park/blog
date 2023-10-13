@@ -19,45 +19,39 @@
 </template>
 
 <script setup>
-import { computed, ref } from 'vue';
-import { RouterLink, useRouter } from 'vue-router';
-import { onBeforeMount } from 'vue';
+import { computed, ref } from 'vue'
+import { RouterLink, useRouter } from 'vue-router'
+import { onBeforeMount } from 'vue'
 
-const router = useRouter();
+const router = useRouter()
 
 const authenticated = computed(() => {
-  const user = JSON.parse(localStorage.getItem('user'));
-  return user !== null;
-});
+  const user = JSON.parse(localStorage.getItem('user'))
+  return user !== null
+})
 
-const isLoggedIn = ref(authenticated.value);
+const isLoggedIn = ref(authenticated.value)
 
 const handleLogout = () => {
   window.location.reload()
-  localStorage.removeItem('user');
-  isLoggedIn.value = false;
-  router.push('/register');
-};
+  localStorage.removeItem('user')
+  isLoggedIn.value = false
+  router.push('/register')
+}
 
 onBeforeMount(() => {
   if (authenticated.value) {
-    router.push('/');
+    router.push('/')
   } else {
-    router.push('/register');
+    router.push('/register')
   }
-});
-
+})
 </script>
 
 <style scoped>
 header {
   line-height: 1.5;
   max-height: 100vh;
-}
-
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
 }
 
 nav {
@@ -87,7 +81,6 @@ nav a:first-of-type {
   border: 0;
   color: rgb(0, 0, 0);
   text-decoration: none;
-
 }
 
 @media (min-width: 1024px) {

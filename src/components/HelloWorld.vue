@@ -7,7 +7,6 @@
           <router-link :to="'/post/' + post.id">
             <h3 @click="viewPost(post.id)">{{ post.title }}</h3>
           </router-link>
-          <!-- <p>{{ post.body }}</p> -->
         </li>
       </ul>
     </div>
@@ -49,19 +48,6 @@ h1 {
 h3 {
   font-size: 1.2rem;
 }
-
-.greetings h1,
-.greetings h3 {
-  text-align: center;
-}
-
-@media (min-width: 1024px) {
-  .greetings h1,
-  .greetings h3 {
-    text-align: left;
-  }
-}
-
 .blog-landing {
   max-width: 600px;
   margin: 0 auto;

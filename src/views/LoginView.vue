@@ -27,16 +27,18 @@ const router = useRouter()
 
 const login = () => {
   const storedUser = JSON.parse(localStorage.getItem('user'))
-  if (storedUser && storedUser.username === username.value && storedUser.password === password.value) {
-    sessionStorage.setItem('authenticated', 'true') 
-    router.push('/post') 
-  window.location.reload()
-
+  if (
+    storedUser &&
+    storedUser.username === username.value &&
+    storedUser.password === password.value
+  ) {
+    sessionStorage.setItem('authenticated', 'true')
+    router.push('/post')
+    window.location.reload()
   } else {
     alert('Invalid username or password.')
   }
 }
-
 </script>
 
 <style scoped>

@@ -39,7 +39,7 @@ const register = () => {
 </script>
 
 <style scope>
-.forms{
-    width: 30%;
+.forms {
+  width: 30%;
 }
 </style>
