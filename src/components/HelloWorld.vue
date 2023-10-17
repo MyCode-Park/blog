@@ -55,7 +55,7 @@ h1 {
 .title:hover {
   transform: scale(1.1);
   text-decoration: underline;
-  text-decoration-color: white; /* Zoom out effect on hover */
+  text-decoration-color: white; 
 }
 
 h2 {

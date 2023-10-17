@@ -59,7 +59,7 @@ const login = () => {
   border: 1px solid !important;
   transition:
     background 0.5s ease,
-    color 0.5s ease; /* Add transition properties */
+    color 0.5s ease; 
 }
 
 .button:hover {
@@ -176,7 +176,7 @@ const login = () => {
   color: #ef3b3a;
 }
 body {
-  background: #76b852; /* fallback for old browsers */
+  background: #76b852; 
   background: rgb(141, 194, 111);
   background: linear-gradient(90deg, rgba(141, 194, 111, 1) 0%, rgba(118, 184, 82, 1) 50%);
   font-family: 'Roboto', sans-serif;

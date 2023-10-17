@@ -25,7 +25,7 @@ const fetchData = (postId) => {
 }
 
 const goBack = () => {
-  router.go(-1) // This will navigate back one step in the history stack
+  router.go(-1) 
 }
 
 onMounted(() => {
