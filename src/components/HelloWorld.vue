@@ -45,8 +45,13 @@ h1 {
   top: -10px;
 }
 
+h2 {
+  color: var(--vt-c-white) !important;
+}
+
 h3 {
   font-size: 1.2rem;
+  text-decoration: none !important;
 }
 .blog-landing {
   max-width: 600px;
@@ -64,7 +69,7 @@ li {
 
 h3 {
   margin-bottom: 10px;
-  color: #007bff;
+  color: var(--bs-blue);
   cursor: pointer;
 }
 

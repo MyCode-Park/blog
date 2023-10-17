@@ -11,7 +11,7 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import 'bootstrap/dist/js/bootstrap.bundle.min'
 
 const routes = [
-  { path: '/', name: 'PostView', component: HelloWorld },
+  { path: '/', component: HelloWorld },
   { path: '/post/:id', component: PostView },
   { path: '/register', component: RegisterView },
   { path: '/login', component: LoginView }

@@ -27,12 +27,12 @@ const router = useRouter()
 
 const authenticated = computed(() => {
   const user = JSON.parse(localStorage.getItem('user'))
-  console.log("user", user);
+  console.log('user', user)
   return user !== null
 })
 
 const isLoggedIn = ref(authenticated.value)
-console.log('value', isLoggedIn);
+console.log('value', isLoggedIn)
 
 const handleLogout = () => {
   window.location.reload()
@@ -45,7 +45,7 @@ onBeforeMount(() => {
   if (authenticated.value) {
     router.push('/')
   } else {
-    router.push('/register')
+    router.push('/login')
   }
 })
 </script>
@@ -81,7 +81,7 @@ nav a {
 
 nav a:first-of-type {
   border: 0;
-  color: rgb(0, 0, 0);
+  color: var(--vt-c-white);
   text-decoration: none;
 }
 

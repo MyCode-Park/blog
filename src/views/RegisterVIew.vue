@@ -1,15 +1,21 @@
 <template>
   <div class="container mt-5">
-    <h2>Register</h2>
+    <h2 class="head">Register</h2>
     <form @submit.prevent="register" class="mt-3">
       <div class="forms">
         <div class="mb-3">
           <label for="email" class="form-label">Email:</label>
-          <input v-model="email" type="email" class="form-control" required />
+          <input v-model="email" type="email" class="form-control no-border" required />
         </div>
         <div class="mb-3">
           <label for="password" class="form-label">Password:</label>
-          <input v-model="password" type="password" class="form-control" required minlength="8" />
+          <input
+            v-model="password"
+            type="password"
+            class="form-control no-border"
+            required
+            minlength="8"
+          />
         </div>
       </div>
       <button type="submit" class="btn btn-primary">Register</button>
@@ -50,5 +56,20 @@ const register = () => {
 <style scope>
 .forms {
   width: 30%;
+  color: var(--vt-c-text-dark-2);
+}
+
+.no-border {
+  background-color: black !important;
+  outline: none !important;
+  color: aquamarine !important;
+}
+
+.form-control {
+  color: var(--bs-blue) !important;
+}
+
+h2 {
+  color: var(--vt-c-white) !important;
 }
 </style>

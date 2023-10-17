@@ -34,13 +34,17 @@ onMounted(() => {
 </script>
 
 <style>
-.post{
+.post {
   position: relative;
-    top: 100px;
+  top: 100px;
 }
 
 h1 {
-  color: #007bff;
+  color: var(--vt-c-white) !important;
   font-size: 1.2rem;
+}
+
+p {
+  color: var(--vt-c-text-dark-2);
 }
 </style>
