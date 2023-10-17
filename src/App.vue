@@ -13,7 +13,6 @@
         </div>
       </nav>
     </header>
-
     <RouterView />
   </div>
 </template>
@@ -27,12 +26,10 @@ const router = useRouter()
 
 const authenticated = computed(() => {
   const user = JSON.parse(localStorage.getItem('user'))
-  console.log('user', user)
   return user !== null
 })
 
 const isLoggedIn = ref(authenticated.value)
-console.log('value', isLoggedIn)
 
 const handleLogout = () => {
   window.location.reload()

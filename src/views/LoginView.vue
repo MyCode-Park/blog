@@ -27,7 +27,10 @@ const router = useRouter()
 
 const login = () => {
   const storedUser = JSON.parse(localStorage.getItem('user'))
-  if (storedUser && storedUser.email === email.value && storedUser.password === password.value) {
+  console.log('storedUser', storedUser)
+  console.log('storedUser.email', storedUser.email)
+  console.log('storedUser.pass', storedUser.password)
+  if (storedUser.email === email.value && storedUser.password === password.value) {
     sessionStorage.setItem('authenticated', 'true')
     router.push('/post')
     window.location.reload()
@@ -44,9 +47,9 @@ const login = () => {
 }
 
 no-border {
-  background-color: black !important;
+  background-color: var(bs-black) !important;
   outline: none !important;
-  color: aquamarine !important;
+  color: var(--bs-blue) !important;
 }
 .form-control {
   color: var(--bs-blue) !important;
