@@ -1,4 +1,5 @@
 import './assets/main.css'
+import './style.scss'
 
 import { createApp } from 'vue'
 import { createRouter, createWebHistory } from 'vue-router'
@@ -7,8 +8,8 @@ import HelloWorld from './components/HelloWorld.vue'
 import PostView from './views/PostView.vue'
 import RegisterView from './views/RegisterView.vue'
 import LoginView from './views/LoginView.vue'
-import 'bootstrap/dist/css/bootstrap.min.css'
-import 'bootstrap/dist/js/bootstrap.bundle.min'
+// import 'bootstrap/dist/css/bootstrap.min.css'
+// import 'bootstrap/dist/js/bootstrap.bundle.min'
 
 const routes = [
   { path: '/', component: HelloWorld },

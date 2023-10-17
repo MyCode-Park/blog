@@ -1,19 +1,58 @@
 <template>
   <div>
     <header>
-      <nav>
-        <div class="wrapper">
-          <RouterLink to="/" v-if="authenticated">View Post</RouterLink>
-          <RouterLink to="/login" @click="handleLogout">
-            {{ isLoggedIn ? 'Logout' : 'Login' }}
-          </RouterLink>
-          <RouterLink to="/register" v-if="!authenticated" :disabled="authenticated">
-            Register
-          </RouterLink>
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+          <router-link
+            to="/"
+            class="navbar-brand"
+            v-if="authenticated"
+            
+            exact-active-class="active"
+          >
+            View Post
+          </router-link>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNav"
+            aria-controls="navbarNav"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+              <li class="nav-item" v-if="authenticated">
+                <router-link to="/" class="nav-link" exact exact-active-class="active">
+                  View Post
+                </router-link>
+              </li>
+              <li class="nav-item" @click="handleLogout" v-if="isLoggedIn">
+                <router-link to="/" class="nav-link" exact exact-active-class="active">
+                  Logout
+                </router-link>
+              </li>
+              <li class="nav-item" v-else>
+                <router-link to="/login" class="nav-link" exact exact-active-class="active">
+                  Login
+                </router-link>
+              </li>
+              <li class="nav-item" v-if="!authenticated">
+                <router-link to="/register" class="nav-link" exact exact-active-class="active">
+                  Register
+                </router-link>
+              </li>
+            </ul>
+          </div>
         </div>
       </nav>
     </header>
-    <RouterView />
+    <div class="container mt-4">
+      <router-view />
+    </div>
   </div>
 </template>
 
@@ -48,64 +87,20 @@ onBeforeMount(() => {
 </script>
 
 <style scoped>
-header {
-  line-height: 1.5;
-  max-height: 100vh;
+.navbar {
+  border-bottom: 2px solid;
+  border-color: crimson;
+  background: crimson !important;
 }
 
-nav {
-  width: 100%;
-  font-size: 12px;
-  text-align: center;
-  margin-top: 2rem;
+.nav-item{
+  font-size: 1rem;
+  font-weight: 600;
+  margin-right: 1rem;
 }
 
-nav a.router-link-exact-active {
-  color: rgb(0, 102, 255);
-  text-decoration: none;
+.navbar-brand {
+  display: none;
 }
 
-nav a.router-link-exact-active:hover {
-  background-color: transparent;
-}
-
-nav a {
-  display: inline-block;
-  padding: 0 1rem;
-  border-left: 1px solid var(--color-border);
-  text-decoration: none;
-}
-
-nav a:first-of-type {
-  border: 0;
-  color: var(--vt-c-white);
-  text-decoration: none;
-}
-
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
-
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
-
-  nav {
-    text-align: left;
-    margin-left: -1rem;
-    font-size: 1rem;
-
-    padding: 1rem 0;
-    margin-top: 1rem;
-  }
-}
 </style>

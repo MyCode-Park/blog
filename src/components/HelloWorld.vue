@@ -5,7 +5,7 @@
       <ul>
         <li v-for="post in blogPosts" :key="post.id">
           <router-link :to="'/post/' + post.id">
-            <h3 @click="viewPost(post.id)">{{ post.title }}</h3>
+            <h3 @click="viewPost(post.id)" class="title">{{ post.title }}</h3>
           </router-link>
         </li>
       </ul>
@@ -44,20 +44,28 @@ h1 {
   position: relative;
   top: -10px;
 }
+.title {
+  text-decoration: underline;
+  color: crimson;
+  text-decoration-color: white;
+  transition: transform 0.3s ease;
+  font-size: 1.3rem;
+}
+
+.title:hover {
+  transform: scale(1.1);
+  text-decoration: underline;
+  text-decoration-color: white; /* Zoom out effect on hover */
+}
 
 h2 {
   color: var(--vt-c-white) !important;
+  margin: 2rem 0;
 }
 
 h3 {
   font-size: 1.2rem;
-  text-decoration: none !important;
 }
-.blog-landing {
-  max-width: 600px;
-  margin: 0 auto;
-}
-
 ul {
   list-style: none;
   padding: 0;
@@ -69,8 +77,8 @@ li {
 
 h3 {
   margin-bottom: 10px;
-  color: var(--bs-blue);
   cursor: pointer;
+  text-decoration: none;
 }
 
 h3:hover {
